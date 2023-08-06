@@ -23,19 +23,20 @@ const Header =()=>{
     }
     useEffect(()=>{
      const timer = setTimeout(()=>{
-        getSuggestions();
-      },2000);
-      return()=>{clearTimeout(timer)}
-      
-    },[])
-    
-    const getSuggestions = async()=>{
+         const getSuggestions = async()=>{
         console.log("imin");
         const fetchSuggestions = await fetch(SEARCH_SUGGESTION_URL+query);
         const suggesteData = await fetchSuggestions.json();
         setSuggestions(suggesteData[1]);
 
     }
+        getSuggestions();
+      },2000);
+      return()=>{clearTimeout(timer)}
+      
+    },[])
+    
+   
     return (
         <>
         <header className=" flex  items-center justify-between max-w-7xl m-auto  mt-5">
