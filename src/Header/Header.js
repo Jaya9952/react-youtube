@@ -34,7 +34,7 @@ const Header =()=>{
       },2000);
       return()=>{clearTimeout(timer)}
       
-    },[])
+    },[query])
     
    
     return (

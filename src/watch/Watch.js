@@ -29,7 +29,7 @@ const Watch = () => {
         getVideoList()
     
         dispatch(closeMenu())
-      },[])
+      },[dispatch])
 
     
       if(detail.length===0)
