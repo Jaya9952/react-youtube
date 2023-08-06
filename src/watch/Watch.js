@@ -12,24 +12,26 @@ const Watch = () => {
       const [detail,setDetail]=useState([]);
       const [videos,setVideos] = useState([]);
       
-      const dispatch = useDispatch()
+      
       useEffect(()=>{
+        const dispatch = useDispatch();
+        const getVideo= async()=>{
+          const videoData = await fetch(YOUTUBE_WATCH_URL+searchparam.get('v')+"&key="+API_KEY);
+          const videolink = await videoData.json();
+          setDetail(videolink.items);   
+        }
+        const getVideoList = async()=>{
+          const videoData =  await fetch(YOUTUBE_URL);
+          const videoList = await videoData.json();        
+          setVideos(videoList.items);
+        }
         getVideo()
         getVideoList()
     
         dispatch(closeMenu())
       },[])
 
-      const getVideo= async()=>{
-        const videoData = await fetch(YOUTUBE_WATCH_URL+searchparam.get('v')+"&key="+API_KEY);
-        const videolink = await videoData.json();
-        setDetail(videolink.items);   
-      }
-      const getVideoList = async()=>{
-        const videoData =  await fetch(YOUTUBE_URL);
-        const videoList = await videoData.json();        
-        setVideos(videoList.items);
-      }
+    
       if(detail.length===0)
         return 'wait man its loading';
  
