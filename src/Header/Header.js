@@ -27,7 +27,7 @@ const Header =()=>{
       },2000);
       return()=>{clearTimeout(timer)}
       
-    },[query])
+    },[])
     
     const getSuggestions = async()=>{
         console.log("imin");
