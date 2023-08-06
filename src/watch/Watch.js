@@ -12,9 +12,9 @@ const Watch = () => {
       const [detail,setDetail]=useState([]);
       const [videos,setVideos] = useState([]);
       
-      
+      const dispatch = useDispatch();
+
       useEffect(()=>{
-        const dispatch = useDispatch();
         const getVideo= async()=>{
           const videoData = await fetch(YOUTUBE_WATCH_URL+searchparam.get('v')+"&key="+API_KEY);
           const videolink = await videoData.json();
